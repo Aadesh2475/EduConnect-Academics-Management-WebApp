@@ -90,17 +90,33 @@ jobs:
       - name: Build Next.js app
         run: npx next build
         env:
-          # Required env vars for build — supplied as GitHub Secrets
+          # Database
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          # Auth
           BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
           BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}
+          # OAuth
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
+          GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
+          # App config
           NEXT_PUBLIC_APP_URL: ${{ secrets.NEXT_PUBLIC_APP_URL }}
+          NEXT_PUBLIC_APP_NAME: ${{ secrets.NEXT_PUBLIC_APP_NAME }}
+          # Redis
           REDIS_URL: ${{ secrets.REDIS_URL }}
-          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
-          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
-          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+          # Rate limiting
+          RATE_LIMIT_WINDOW: ${{ secrets.RATE_LIMIT_WINDOW }}
+          RATE_LIMIT_MAX_REQUESTS: ${{ secrets.RATE_LIMIT_MAX_REQUESTS }}
+          # Email
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+          RESEND_FROM_NAME: ${{ secrets.RESEND_FROM_NAME }}
+          # Cloudinary
+          CLOUDINARY_URL: ${{ secrets.CLOUDINARY_URL }}
+          NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: ${{ secrets.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME }}
+          # AI
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
