@@ -14,6 +14,11 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
   ]),
   {
+    files: ["**/*.{js,jsx,ts,tsx,mjs,cjs}"],
+    plugins: {
+      ...nextVitals[0].plugins,
+      ...nextTs[0].plugins,
+    },
     rules: {
       // Downgrade to warn — Prisma query results and API responses legitimately need `any`
       "@typescript-eslint/no-explicit-any": "warn",
@@ -34,6 +39,8 @@ const eslintConfig = defineConfig([
       "prefer-const": "warn",
       // Downgrade to warn — verify page uses native <a> intentionally
       "@next/next/no-html-link-for-pages": "warn",
+      // Downgrade to warn — JS scripts and configs using `require()`
+      "@typescript-eslint/no-require-imports": "warn",
     },
   },
 ]);
