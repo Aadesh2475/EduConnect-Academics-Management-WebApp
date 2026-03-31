@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth-utils";
 import prisma from "@/lib/prisma";
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
         const session = await getSession();
         if (!session) return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
@@ -19,7 +19,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
         if (!teacher) return NextResponse.json({ success: false, error: "Teacher not found" }, { status: 404 });
 
         const report = await prisma.externalExamReport.findUnique({
-            where: { id: params.id }
+            where: { id: (await params).id }
         });
 
         if (!report) return NextResponse.json({ success: false, error: "Report not found" }, { status: 404 });
@@ -28,7 +28,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
         const percentage = Math.round((obtainedMarks / totalMarks) * 100 * 10) / 10;
 
         const updatedReport = await prisma.externalExamReport.update({
-             where: { id: params.id },
+             where: { id: (await params).id },
             data: {
                 examType,
                 testName,
@@ -46,7 +46,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
         const session = await getSession();
         if (!session) return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
@@ -60,14 +60,14 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
         if (!teacher) return NextResponse.json({ success: false, error: "Teacher not found" }, { status: 404 });
 
         const report = await prisma.externalExamReport.findUnique({
-            where: { id: params.id }
+            where: { id: (await params).id }
         });
 
         if (!report) return NextResponse.json({ success: false, error: "Report not found" }, { status: 404 });
         if (report.teacherId !== teacher.id) return NextResponse.json({ success: false, error: "Forbidden" }, { status: 403 });
 
         await prisma.externalExamReport.delete({
-             where: { id: params.id }
+             where: { id: (await params).id }
          });
 
         return NextResponse.json({ success: true, message: "Report deleted successfully" });
