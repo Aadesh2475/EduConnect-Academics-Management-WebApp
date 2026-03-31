@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.local
+      - .env
+    environment:
+      - NODE_ENV=development
+      - REDIS_URL=redis://redis:6379
+      - LOCAL_AI_URL=http://ai:8000/chat
+      - WATCHPACK_POLLING=true
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    command: npm run dev
+    depends_on:
+      - redis
+      - ai
+    restart: always
+
+  ai:
+    build:
+      context: ./python_ai
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHON_RELOAD=true
+    volumes:
+      - ./python_ai:/app
+    restart: always
+
+  redis:
+    image: redis:alpine
+    command: redis-server --save 60 1 --loglevel warning
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: always
+
+volumes:
+  redis_data:
