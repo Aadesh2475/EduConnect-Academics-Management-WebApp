@@ -64,8 +64,8 @@ export function Sidebar({ user }: SidebarProps) {
         className={cn(
           "group relative flex h-10 items-center gap-3 rounded-md pl-4 text-[14px] font-medium transition-all duration-200 ease-in border-l-[3px] border-transparent",
           isActive
-            ? "bg-[rgba(0,229,153,0.12)] text-white shadow-[0_0_8px_rgba(0,229,153,0.45)] !border-[#00e599]"
-            : "text-[#D4D4D4] hover:bg-[rgba(0,229,153,0.08)] hover:text-white hover:shadow-[0_0_6px_rgba(0,229,153,0.35)]"
+            ? "bg-white/8 text-white border-white"
+            : "text-[#D4D4D4] hover:bg-white/5 hover:text-white"
         )}
       >
         <item.icon
@@ -99,7 +99,7 @@ export function Sidebar({ user }: SidebarProps) {
         <div className="flex h-16 shrink-0 items-center px-1">
           <Link href="/dashboard/student" className="flex items-center gap-2.5">
             <div className="w-10 h-10 rounded-xl bg-[#161616] border border-[#1C1C1C] flex items-center justify-center">
-              <GraduationCap className="w-6 h-6 text-[#00E599]" />
+              <GraduationCap className="w-6 h-6 text-white" />
             </div>
             <div>
               <span className="text-lg font-bold text-white leading-none">EduConnect</span>

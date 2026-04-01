@@ -154,7 +154,7 @@ export default function StudentClassDetailsPage() {
         <div className="space-y-8 p-8 bg-[#090909] min-h-screen">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                 <div className="flex items-center gap-4">
-                    <Button variant="outline" size="icon" onClick={() => router.push("/dashboard/student/classes")} className="border-[#1C1C1C] text-[#888] hover:text-[#00E599] hover:bg-[#00E599]/5 rounded-xl h-11 w-11">
+                    <Button variant="outline" size="icon" onClick={() => router.push("/dashboard/student/classes")} className="border-[#1C1C1C] text-[#888] hover:text-white hover:bg-white/5 rounded-xl h-11 w-11 transition-all">
                         <ArrowLeft className="w-4 h-4" />
                     </Button>
                     <div>
@@ -187,10 +187,10 @@ export default function StudentClassDetailsPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         <div className="lg:col-span-2 space-y-8">
                             <Card className="bg-[#161616] border-[#1C1C1C] rounded-2xl overflow-hidden relative">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-[#00E599]/5 rounded-full blur-3xl -mr-16 -mt-16" />
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16" />
                                 <CardHeader className="border-b border-[#1C1C1C]/50 px-8 py-6">
                                     <div className="flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#00E599]" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-white" />
                                         <CardTitle className="text-white text-xs font-bold uppercase tracking-widest leading-none">COURSE DESCRIPTION</CardTitle>
                                     </div>
                                 </CardHeader>
@@ -205,7 +205,7 @@ export default function StudentClassDetailsPage() {
                                 <CardHeader className="border-b border-[#1C1C1C]/50 px-8 py-6">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-2">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-[#00E599]" />
+                                            <div className="w-1.5 h-1.5 rounded-full bg-white" />
                                             <CardTitle className="text-white text-xs font-bold uppercase tracking-widest leading-none">RECENT ACTIVITY</CardTitle>
                                         </div>
                                         <CardDescription className="text-[#444] text-[10px] font-bold uppercase tracking-widest">Latest Updates</CardDescription>
@@ -215,22 +215,22 @@ export default function StudentClassDetailsPage() {
                                     <div className="space-y-4">
                                         {data.assignments.slice(0, 2).map(a => (
                                             <div key={a.id} className="flex items-center gap-4 p-4 rounded-xl border border-[#1C1C1C] bg-black/20 hover:bg-[#1F1F1F]/40 transition-all group cursor-pointer">
-                                                <div className="w-10 h-10 rounded-lg bg-[#161616] border border-[#1C1C1C] flex items-center justify-center shrink-0 group-hover:border-[#00E599]/30 transition-all text-[#00E599]">
+                                                <div className="w-10 h-10 rounded-lg bg-[#161616] border border-[#1C1C1C] flex items-center justify-center shrink-0 group-hover:border-white/30 transition-all text-white">
                                                     <FileText className="w-5 h-5" />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
-                                                    <p className="text-sm font-bold text-white group-hover:text-[#00E599] transition-colors truncate">New Task: {a.title}</p>
+                                                    <p className="text-sm font-bold text-white group-hover:text-white transition-colors truncate">New Task: {a.title}</p>
                                                     <p className="text-[10px] font-bold text-[#444] uppercase tracking-widest mt-1">Due {formatDate(a.dueDate)}</p>
                                                 </div>
                                             </div>
                                         ))}
                                         {data.materials.slice(0, 2).map(m => (
                                             <div key={m.id} className="flex items-center gap-4 p-4 rounded-xl border border-[#1C1C1C] bg-black/20 hover:bg-[#1F1F1F]/40 transition-all group cursor-pointer">
-                                                <div className="w-10 h-10 rounded-lg bg-[#161616] border border-[#1C1C1C] flex items-center justify-center shrink-0 group-hover:border-[#00E599]/30 transition-all">
+                                                <div className="w-10 h-10 rounded-lg bg-[#161616] border border-[#1C1C1C] flex items-center justify-center shrink-0 group-hover:border-white/30 transition-all text-white">
                                                     {getMaterialIcon(m.type)}
                                                 </div>
                                                 <div className="flex-1 min-w-0">
-                                                    <p className="text-sm font-bold text-white group-hover:text-[#00E599] transition-colors truncate">New Resource: {m.title}</p>
+                                                    <p className="text-sm font-bold text-white group-hover:text-white transition-colors truncate">New Resource: {m.title}</p>
                                                     <p className="text-[10px] font-bold text-[#444] uppercase tracking-widest mt-1">{formatDate(m.createdAt)}</p>
                                                 </div>
                                             </div>
@@ -244,7 +244,7 @@ export default function StudentClassDetailsPage() {
                             <Card className="bg-[#161616] border-[#1C1C1C] rounded-2xl overflow-hidden">
                                 <CardHeader className="border-b border-[#1C1C1C]/50 px-8 py-6">
                                     <div className="flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#00E599]" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-white" />
                                         <CardTitle className="text-white text-xs font-bold uppercase tracking-widest leading-none">INSTRUCTOR</CardTitle>
                                     </div>
                                 </CardHeader>
@@ -252,13 +252,13 @@ export default function StudentClassDetailsPage() {
                                     <div className="flex flex-col items-center text-center">
                                         <Avatar className="h-24 w-24 border-2 border-[#1C1C1C] shadow-2xl mb-4">
                                             <AvatarImage src={data.teacher.image || undefined} alt={data.teacher.name} />
-                                            <AvatarFallback className="bg-[#1F1F1F] text-[#00E599] text-2xl font-bold">
+                                            <AvatarFallback className="bg-white text-black text-2xl font-bold">
                                                 {getInitials(data.teacher.name)}
                                             </AvatarFallback>
                                         </Avatar>
                                         <p className="text-lg font-bold text-white leading-tight">{data.teacher.name}</p>
                                         <p className="text-[10px] font-bold text-[#444] uppercase tracking-widest mt-2">{data.teacher.email}</p>
-                                        <Button variant="outline" className="mt-6 w-full border-[#1C1C1C] text-[#888] hover:text-[#00E599] hover:bg-[#00E599]/5 font-bold h-11" onClick={() => router.push(`/dashboard/student/messages?teacherId=${data.teacher.email}`)}>
+                                        <Button variant="outline" className="mt-6 w-full border-[#1C1C1C] text-[#888] hover:text-white hover:bg-white/5 font-bold h-11 transition-all" onClick={() => router.push(`/dashboard/student/messages?teacherId=${data.teacher.email}`)}>
                                             <MessageSquare className="w-4 h-4 mr-2" />
                                             Send Message
                                         </Button>
@@ -269,7 +269,7 @@ export default function StudentClassDetailsPage() {
                             <Card className="bg-[#161616] border-[#1C1C1C] rounded-2xl overflow-hidden">
                                 <CardHeader className="border-b border-[#1C1C1C]/50 px-8 py-6">
                                     <div className="flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#00E599]" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-white" />
                                         <CardTitle className="text-white text-xs font-bold uppercase tracking-widest leading-none">CLASS ANALYTICS</CardTitle>
                                     </div>
                                 </CardHeader>
@@ -296,11 +296,11 @@ export default function StudentClassDetailsPage() {
 
                 <TabsContent value="materials" className="outline-none">
                     <Card className="bg-[#161616] border-[#1C1C1C] rounded-2xl overflow-hidden relative">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#00E599]/5 rounded-full blur-3xl -mr-16 -mt-16" />
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16" />
                         <CardHeader className="border-b border-[#1C1C1C]/50 px-8 py-6">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#00E599]" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
                                     <CardTitle className="text-white text-xs font-bold uppercase tracking-widest leading-none">ACADEMIC RESOURCES</CardTitle>
                                 </div>
                                 <CardDescription className="text-[#444] text-[10px] font-bold uppercase tracking-widest">Provided Materials</CardDescription>
@@ -316,13 +316,13 @@ export default function StudentClassDetailsPage() {
                             ) : (
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {data.materials.map(material => (
-                                        <div key={material.id} className="p-5 rounded-2xl border border-[#1C1C1C] bg-black/20 hover:bg-[#1F1F1F]/40 hover:border-[#00E599]/30 transition-all group flex flex-col h-full">
+                                        <div key={material.id} className="p-5 rounded-2xl border border-[#1C1C1C] bg-black/20 hover:bg-[#1F1F1F]/40 hover:border-white/30 transition-all group flex flex-col h-full">
                                             <div className="flex items-start gap-4 mb-4">
-                                                <div className="w-12 h-12 rounded-xl bg-[#161616] border border-[#1C1C1C] flex items-center justify-center shrink-0 group-hover:border-[#00E599]/30 transition-all">
+                                                <div className="w-12 h-12 rounded-xl bg-[#161616] border border-[#1C1C1C] flex items-center justify-center shrink-0 group-hover:border-white/30 transition-all text-white">
                                                     {getMaterialIcon(material.type)}
                                                 </div>
                                                 <div className="flex-1 min-w-0 pt-1">
-                                                    <h4 className="font-bold text-white group-hover:text-[#00E599] transition-colors truncate leading-tight">{material.title}</h4>
+                                                    <h4 className="font-bold text-white group-hover:text-white transition-colors truncate leading-tight">{material.title}</h4>
                                                     <p className="text-[10px] font-bold text-[#444] uppercase tracking-widest mt-1.5">{formatDate(material.createdAt)}</p>
                                                 </div>
                                             </div>
@@ -344,11 +344,11 @@ export default function StudentClassDetailsPage() {
 
                 <TabsContent value="assignments" className="outline-none">
                     <Card className="bg-[#161616] border-[#1C1C1C] rounded-2xl overflow-hidden relative">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#00E599]/5 rounded-full blur-3xl -mr-16 -mt-16" />
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16" />
                         <CardHeader className="border-b border-[#1C1C1C]/50 px-8 py-6">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#00E599]" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
                                     <CardTitle className="text-white text-xs font-bold uppercase tracking-widest leading-none">TASKS & ASSIGNMENTS</CardTitle>
                                 </div>
                                 <CardDescription className="text-[#444] text-[10px] font-bold uppercase tracking-widest">Enrollment Deliverables</CardDescription>
@@ -372,18 +372,18 @@ export default function StudentClassDetailsPage() {
                                                 <div className="flex items-center gap-5">
                                                     <div className={cn(
                                                         "w-12 h-12 rounded-xl border border-[#1C1C1C] flex items-center justify-center shrink-0 transition-all",
-                                                        status === "GRADED" ? "text-[#00E599] bg-[#00E599]/5 border-[#00E599]/20" :
+                                                        status === "GRADED" ? "text-white bg-white/10 border-white/20" :
                                                             status === "SUBMITTED" ? "text-amber-500 bg-amber-500/5 border-amber-500/20" :
                                                                 isOverdue ? "text-rose-500 bg-rose-500/5 border-rose-500/20" :
-                                                                    "text-[#444] bg-[#161616] group-hover:border-[#00E599]/30"
+                                                                    "text-[#444] bg-[#161616] group-hover:border-white/30"
                                                     )}>
                                                         {status === "GRADED" ? <CheckCircle2 className="w-6 h-6" /> : <FileText className="w-6 h-6" />}
                                                     </div>
                                                     <div>
-                                                        <h4 className="text-lg font-bold text-white leading-tight group-hover:text-[#00E599] transition-colors">{assignment.title}</h4>
+                                                        <h4 className="text-lg font-bold text-white leading-tight group-hover:text-white transition-colors">{assignment.title}</h4>
                                                         <div className="flex items-center gap-6 mt-2 text-[10px] font-bold uppercase tracking-widest text-[#444]">
                                                             <span className="flex items-center gap-2">
-                                                                <Calendar className="w-3.5 h-3.5 text-[#00E599]/40" />
+                                                                <Calendar className="w-3.5 h-3.5 text-white/40" />
                                                                 DUE: {formatDate(assignment.dueDate)}
                                                             </span>
                                                             <span className="flex items-center gap-2">
@@ -397,7 +397,7 @@ export default function StudentClassDetailsPage() {
                                                     <div className="text-right">
                                                         <Badge className={cn(
                                                             "rounded-md px-3 py-1 text-[10px] font-bold border-0 uppercase tracking-wider",
-                                                            status === "GRADED" ? "bg-[#00E599]/10 text-[#00E599]" :
+                                                            status === "GRADED" ? "bg-white/10 text-white" :
                                                                 status === "SUBMITTED" ? "bg-amber-500/10 text-amber-500" :
                                                                     isOverdue ? "bg-rose-500/10 text-rose-500" :
                                                                         "bg-[#1F1F1F] text-[#888]"
@@ -405,7 +405,7 @@ export default function StudentClassDetailsPage() {
                                                             {status === "PENDING" ? (isOverdue ? "OVERDUE" : "TODO") : status}
                                                         </Badge>
                                                         {status === "GRADED" && (
-                                                            <p className="text-xs font-bold text-[#00E599] mt-2 tracking-widest">
+                                                            <p className="text-xs font-bold text-white mt-2 tracking-widest">
                                                                 {assignment.submission?.marks} <span className="text-[10px] opacity-40">/ {assignment.totalMarks}</span>
                                                             </p>
                                                         )}
@@ -425,11 +425,11 @@ export default function StudentClassDetailsPage() {
 
                 <TabsContent value="exams" className="outline-none">
                     <Card className="bg-[#161616] border-[#1C1C1C] rounded-2xl overflow-hidden relative">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#00E599]/5 rounded-full blur-3xl -mr-16 -mt-16" />
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16" />
                         <CardHeader className="border-b border-[#1C1C1C]/50 px-8 py-6">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[#00E599]" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
                                     <CardTitle className="text-white text-xs font-bold uppercase tracking-widest leading-none">EXAMINATIONS</CardTitle>
                                 </div>
                                 <CardDescription className="text-[#444] text-[10px] font-bold uppercase tracking-widest">Academic Assessments</CardDescription>
@@ -456,29 +456,29 @@ export default function StudentClassDetailsPage() {
                                         return (
                                             <div key={exam.id} className={cn(
                                                 "p-5 rounded-2xl border transition-all flex flex-col sm:flex-row gap-6 sm:items-center justify-between group",
-                                                isLive ? "bg-[#00E599]/5 border-[#00E599]/20" : "bg-black/20 border-[#1C1C1C] hover:bg-[#1F1F1F]/40"
+                                                isLive ? "bg-white/5 border-white/20" : "bg-black/20 border-[#1C1C1C] hover:bg-[#1F1F1F]/40"
                                             )}>
                                                 <div className="flex items-center gap-5">
                                                     <div className={cn(
                                                         "w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 transition-all",
-                                                        isLive ? "text-[#00E599] bg-[#00E599]/10 border-[#00E599]/30" : "text-[#444] bg-[#161616] group-hover:border-[#00E599]/30"
+                                                        isLive ? "text-white bg-white/10 border-white/30" : "text-[#444] bg-[#161616] group-hover:border-white/30"
                                                     )}>
                                                         <ClipboardList className="w-6 h-6" />
                                                     </div>
                                                     <div>
                                                         <div className="flex items-center gap-3">
-                                                            <h4 className="text-lg font-bold text-white group-hover:text-[#00E599] transition-colors leading-tight">{exam.title}</h4>
+                                                            <h4 className="text-lg font-bold text-white group-hover:text-white transition-colors leading-tight">{exam.title}</h4>
                                                             {isLive && <Badge className="bg-rose-500 text-white border-0 uppercase text-[9px] font-bold px-2 py-0.5 animate-pulse tracking-widest h-5">LIVE</Badge>}
-                                                            {isUpcoming && <Badge className="bg-[#1F1F1F] text-[#00E599] border border-[#00E599]/20 uppercase text-[9px] font-bold px-2 py-0.5 tracking-widest h-5">UPCOMING</Badge>}
+                                                            {isUpcoming && <Badge className="bg-[#1F1F1F] text-white border border-white/20 uppercase text-[9px] font-bold px-2 py-0.5 tracking-widest h-5">UPCOMING</Badge>}
                                                             {isPast && !attempt && <Badge className="bg-[#1F1F1F] text-rose-500 border border-rose-500/20 uppercase text-[9px] font-bold px-2 py-0.5 tracking-widest h-5">MISSED</Badge>}
                                                         </div>
                                                         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-2 text-[10px] font-bold uppercase tracking-widest text-[#444]">
                                                             <span className="flex items-center gap-2">
-                                                                <Calendar className="w-3.5 h-3.5 text-[#00E599]/40" />
+                                                                <Calendar className="w-3.5 h-3.5 text-white/40" />
                                                                 {formatDate(exam.startTime)}
                                                             </span>
                                                             <span className="flex items-center gap-2">
-                                                                <Clock className="w-3.5 h-3.5 text-[#00E599]/40" />
+                                                                <Clock className="w-3.5 h-3.5 text-white/40" />
                                                                 {exam.duration} MINS
                                                             </span>
                                                             <span className="flex items-center gap-2">
@@ -495,12 +495,12 @@ export default function StudentClassDetailsPage() {
                                                             {attempt.status === "GRADED" ? (
                                                                 <div className="text-right">
                                                                     <p className="text-sm font-bold text-white tracking-tight">SCORE: {attempt.obtainedMarks} <span className="text-[10px] text-[#444]">/ {exam.totalMarks}</span></p>
-                                                                    <p className="text-[10px] font-bold text-[#00E599] uppercase tracking-widest mt-1">{attempt.percentage}% ACHIEVEMENT</p>
+                                                                    <p className="text-[10px] font-bold text-white uppercase tracking-widest mt-1">{attempt.percentage}% ACHIEVEMENT</p>
                                                                 </div>
                                                             ) : (
                                                                 <Badge className="bg-amber-500/10 text-amber-500 border-0 uppercase text-[9px] font-bold px-2 py-1 tracking-widest">SUBMITTED</Badge>
                                                             )}
-                                                            <Button onClick={() => router.push(`/dashboard/student/exams`)} variant="outline" className="border-[#1C1C1C] text-[#888] hover:text-[#00E599] hover:bg-[#00E599]/5 font-bold text-[10px] uppercase tracking-widest h-9 px-4">
+                                                            <Button onClick={() => router.push(`/dashboard/student/exams`)} variant="outline" className="border-[#1C1C1C] text-[#888] hover:text-white hover:bg-white/5 font-bold text-[10px] uppercase tracking-widest h-9 px-4 transition-all">
                                                                 View Result
                                                             </Button>
                                                         </div>

@@ -84,12 +84,12 @@ export function Header({ user }: HeaderProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-[#00E599]/30 bg-background px-4 sm:px-6 lg:px-8 shadow-[0_1px_10px_rgba(0,229,153,0.1)]">
+      <header className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-[#252525] bg-[#0A0A0A] px-4 sm:px-6 lg:px-8">
         {/* Mobile menu button */}
         <button
           type="button"
           aria-label="Open navigation menu"
-          className="lg:hidden -m-2.5 p-2.5 text-white"
+          className="lg:hidden -m-2.5 p-2.5 text-[#9A9A9A] hover:text-white transition-colors"
           onClick={() => setMobileMenuOpen(true)}
         >
           <Menu className="h-6 w-6" />
@@ -106,48 +106,37 @@ export function Header({ user }: HeaderProps) {
             {/* Notifications */}
             <NotificationInboxPopover />
 
-            <div className="hidden sm:flex items-center px-3 py-1.5 rounded-full bg-[#181818] border border-[#1C1C1C]">
+            <div className="hidden sm:flex items-center px-3 py-1.5 rounded-full bg-[#111111] border border-[#252525]">
               <span className="text-[12px] font-medium text-[#B5B5B5]">{user.email}</span>
             </div>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-10 w-10 rounded-full p-0 hover:bg-white/5">
-                  <Avatar className="h-10 w-10 border border-[#1C1C1C]">
+                  <Avatar className="h-10 w-10 border border-[#252525]">
                     <AvatarImage src={user.image || ""} alt={user.name || "User"} />
-                    <AvatarFallback className="bg-[#1F1F1F] text-[#00E599] text-sm font-bold">
+                    <AvatarFallback className="bg-[#1F1F1F] text-white text-sm font-bold">
                       {user.name?.charAt(0).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
-                  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#121212] bg-[#00E599]" />
+                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-[#0A0A0A] bg-white" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[280px] bg-[#161616] border-[#1C1C1C] p-0 shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-xl" align="end" forceMount>
-                <div className="p-4 bg-[#1F1F1F] border-b border-[#1C1C1C] rounded-t-xl">
+              <DropdownMenuContent align="end" className="w-64 p-2 bg-[#111111] border border-[#252525] shadow-[0_8px_32px_rgba(0,0,0,0.6)] rounded-xl">
+                <DropdownMenuLabel className="px-3 py-3 mb-1 rounded-lg bg-[#1A1A1A] border border-[#252525]">
                   <div className="flex items-center gap-3">
-                    <Avatar className="h-12 w-12 border border-[#1C1C1C]">
+                    <Avatar className="h-9 w-9 border border-[#252525]">
                       <AvatarImage src={user.image || ""} alt={user.name || ""} />
-                      <AvatarFallback className="bg-[#1F1F1F] text-[#00E599] font-bold text-lg">
-                        {user.name?.charAt(0).toUpperCase()}
+                      <AvatarFallback className="bg-[#252525] text-white text-sm font-bold">
+                        {getInitials(user.name)}
                       </AvatarFallback>
                     </Avatar>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[15px] font-bold text-white truncate leading-tight">{user.name}</span>
-                      <span className="text-[12px] text-[#B5B5B5] truncate mt-0.5">{user.email}</span>
-                      <div className="mt-2">
-                        <Badge className="bg-[#00E599]/10 text-[#00E599] border-none text-[10px] font-bold px-2 py-0.5 h-auto">
-                          {user.role}
-                        </Badge>
-                      </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-bold text-white leading-none truncate">{user.name}</p>
+                      <p className="text-[11px] text-[#555] font-medium mt-1 truncate">{user.email}</p>
+                      <span className="inline-flex items-center mt-1.5 px-2 py-0.5 rounded bg-white/8 border border-white/10 text-[10px] text-[#9A9A9A] font-semibold uppercase tracking-wider">Student</span>
                     </div>
                   </div>
-                </div>
-                <DropdownMenuLabel className="px-3 py-3 mb-1 rounded-lg bg-[#1F1F1F] border border-[#1C1C1C]">
-                  <div className="flex flex-col space-y-1.5">
-                    <p className="text-sm font-bold text-white leading-none">{user.name}</p>
-                    <p className="text-[11px] text-[#9A9A9A] font-medium">{user.email}</p>
-                  </div>
-                  <Badge variant="outline" className="mt-2 bg-[#00E599]/10 text-[#00E599] border-[#00E599]/20 text-[9px] font-bold uppercase tracking-wider px-2 py-0">Student</Badge>
                 </DropdownMenuLabel>
                 <div className="p-1 space-y-0.5">
                   <DropdownMenuItem asChild className="cursor-pointer rounded-lg text-[#D4D4D4] hover:text-white hover:bg-white/5 focus:bg-white/5 focus:text-white py-2 px-3 transition-colors">
@@ -162,7 +151,7 @@ export function Header({ user }: HeaderProps) {
                       <span className="text-sm font-medium">Settings</span>
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator className="bg-[#1C1C1C] my-1" />
+                  <DropdownMenuSeparator className="bg-[#252525] my-1" />
                   <DropdownMenuItem 
                     onClick={handleLogout} 
                     className="text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 focus:text-rose-300 focus:bg-rose-500/10 cursor-pointer rounded-lg py-2 px-3 transition-colors"
@@ -193,37 +182,38 @@ export function Header({ user }: HeaderProps) {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 left-0 z-50 w-72 bg-white lg:hidden overflow-y-auto"
+              className="fixed inset-y-0 left-0 z-50 w-72 bg-[#0A0A0A] border-r border-[#252525] lg:hidden overflow-y-auto flex flex-col"
             >
-              <div className="flex h-16 items-center justify-between px-6 border-b border-[#1C1C1C]">
-                <Link href="/dashboard/student" className="flex items-center space-x-2">
-                  <div className="w-8 h-8 rounded-lg bg-gray-900 dark:bg-gray-100 flex items-center justify-center">
-                    <GraduationCap className="w-5 h-5 text-white dark:text-gray-900" />
+              <div className="flex h-16 items-center justify-between px-6 border-b border-[#252525] shrink-0">
+                <Link href="/dashboard/student" className="flex items-center gap-2.5" onClick={() => setMobileMenuOpen(false)}>
+                  <div className="w-8 h-8 rounded-lg bg-[#161616] border border-[#252525] flex items-center justify-center">
+                    <GraduationCap className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-lg font-bold dark:text-white">EduConnect</span>
+                  <span className="text-lg font-bold text-white">EduConnect</span>
                 </Link>
-                <button aria-label="Close navigation menu" onClick={() => setMobileMenuOpen(false)}>
-                  <X className="h-6 w-6 text-gray-500" />
+                <button aria-label="Close navigation menu" onClick={() => setMobileMenuOpen(false)} className="text-[#555] hover:text-white transition-colors">
+                  <X className="h-5 w-5" />
                 </button>
               </div>
 
               {/* User Info */}
-              <div className="p-4 border-b border-[#1C1C1C]">
-                <div className="flex items-center space-x-3 p-3 rounded-xl bg-gray-100 bg-[#161616]">
-                  <Avatar className="h-10 w-10 border border-gray-200 border-[#1C1C1C]">
+              <div className="p-4 border-b border-[#252525] shrink-0">
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-[#111111] border border-[#252525]">
+                  <Avatar className="h-10 w-10 border border-[#252525]">
                     <AvatarImage src={user.image || undefined} alt={user.name} />
-                    <AvatarFallback className="bg-white bg-[#1F1F1F] text-gray-900 dark:text-white">{getInitials(user.name)}</AvatarFallback>
+                    <AvatarFallback className="bg-[#1F1F1F] text-white font-bold">{getInitials(user.name)}</AvatarFallback>
                   </Avatar>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold truncate">{user.name}</p>
-                    <p className="text-xs text-gray-500 truncate">{user.email}</p>
+                    <p className="text-sm font-semibold text-white truncate">{user.name}</p>
+                    <p className="text-xs text-[#555] truncate">{user.email}</p>
                   </div>
+                  <span className="shrink-0 px-1.5 py-0.5 rounded bg-white/8 border border-white/10 text-[9px] text-[#9A9A9A] font-bold uppercase">S</span>
                 </div>
               </div>
 
               {/* Navigation */}
-              <nav className="p-4">
-                <ul className="space-y-1">
+              <nav className="flex-1 p-4 overflow-y-auto">
+                <ul className="space-y-0.5">
                   {navigation.map((item) => {
                     const isActive = pathname === item.href
                     return (
@@ -232,13 +222,13 @@ export function Header({ user }: HeaderProps) {
                           href={item.href}
                           onClick={() => setMobileMenuOpen(false)}
                           className={cn(
-                            "flex items-center gap-3 rounded-lg p-2.5 text-sm font-medium transition-colors",
+                            "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150 border-l-2",
                             isActive
-                              ? "bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900"
-                              : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5"
+                              ? "bg-white/8 text-white border-white"
+                              : "text-[#9A9A9A] border-transparent hover:bg-white/5 hover:text-white"
                           )}
                         >
-                          <item.icon className="h-5 w-5" />
+                          <item.icon className={cn("h-4 w-4 shrink-0", isActive ? "text-white" : "text-[#555]")} />
                           {item.name}
                         </Link>
                       </li>
@@ -248,15 +238,14 @@ export function Header({ user }: HeaderProps) {
               </nav>
 
               {/* Logout */}
-              <div className="p-4 border-t mt-auto">
-                <Button
-                  variant="ghost"
-                  className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50"
+              <div className="p-4 border-t border-[#252525] shrink-0">
+                <button
                   onClick={handleLogout}
+                  className="group flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-[#555] hover:bg-rose-500/8 hover:text-rose-400 transition-all duration-200"
                 >
-                  <LogOut className="w-5 h-5 mr-3" />
+                  <LogOut className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-x-0.5" />
                   Log Out
-                </Button>
+                </button>
               </div>
             </motion.div>
           </>

@@ -10,7 +10,7 @@ export const prisma =
     log: process.env.NODE_ENV === "development" ? ["error", "warn"] : ["error"],
     datasources: {
       db: {
-        url: process.env.DATABASE_URL || "postgresql://dummy:dummy@localhost:5432/dummy"
+        url: process.env.DATABASE_URL!
       }
     }
   })
