@@ -21,6 +21,7 @@ import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { SkeletonDashboard } from "@/components/ui/skeleton"
+import { cn } from "@/lib/utils"
 
 export default function StudentAcademicsPage() {
   const [loading, setLoading] = useState(true)
